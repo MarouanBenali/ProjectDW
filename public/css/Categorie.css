@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0766AD, #8EA7E9, #E5E0FF);
+    margin: 0;
+    padding: 0;
+}
+
+.intro {
+    text-align: center;
+    background-color: #FFF2F2;
+    padding: 5px;
+    margin: 15px;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.394);
+}
+
+.intro b {
+    font-size: 30px;
+    text-decoration: overline #ff0000 5px;
+    color: #f88e04;
+}
+
+.paragraphe {
+    text-shadow: 4px 4px 2px #00000068;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    color: #0766AD;
+}
+
+.search-container {
+    text-align: center;
+}
+
+input {
+    margin: 20px 0 0 0;
+    width: 50%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #8EA7E9;
+    border-radius: 15px;
+    text-align: center;
+}
+
+input:hover {
+    box-shadow: 0 0 15px 5px #f88e04;
+    font-weight: 500;
+}
+
+.vide {
+    color: #ff0000;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category {
+    background: linear-gradient(to top, rgba(52, 83, 137, 0.366), rgba(246, 184, 59, 0.914));
+    border: 2px solid #8EA7E9;
+    border-radius: 30px;
+    box-shadow: 10px 5px 1px rgba(0, 0, 0, 0.415);
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transform: scale(0.7);
+    font-weight: bold;
+    transition: transform 1.5s ease, box-shadow 1s ease;
+    cursor: pointer;
+}
+
+.category:hover {
+    box-shadow: 0 0 30px 10px rgba(255, 4, 4, 0.8);
+    transform: scale(0.8);
+}
+
+.category img {
+    width: 60%;
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+}
+
+.category:hover img {
+    opacity: 0;
+}
+
+.category h2 {
+    margin: 10px 0;
+    color: #1f09e4;
+    font-size: 1.8rem;
+}
+
+.category p {
+    transition: opacity 0.5s ease;
+}
+
+.category:hover p,
+.category:hover h2 {
+    opacity: 0;
+}
+
+.cat1:hover {
+    background: url(/img/ia2.png) center / cover;
+}
+
+.cat2:hover {
+    background: url(/img/ob2.png) center / cover;
+}
+
+.cat3:hover {
+    background: url(/img/cs2.png) center / cover;
+}
+
+.cat4:hover {
+    background: url(/img/vr2.png) center / cover;
+}
+
+.cat5:hover {
+    background: url(/img/ar2.png) center / cover;
+}
+
+.cat6:hover {
+    background: url(/img/bc2.png) center / cover;
+}
+
+.cat7:hover {
+    background: url(/img/g2.png) center / cover;
+}
+
+.cat8:hover {
+    background: url(/img/rob2.png) center / cover;
+}
+
+.rating {
+    margin-top: 10px;
+}
+
+.rating .star {
+    cursor: pointer;
+    font-size: 37px;
+    color: #ccc;
+}
+
+.rating .star.active {
+    color: #ffd700;
+}
+
+.category p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #0a5fa4;
+}
+
+.search-container select {
+    margin: 20px 0 0 10px;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #8EA7E9;
+    border-radius: 15px;
+    background-color: #FFF2F2;
+    cursor: pointer;
+}
+
+.search-container select:hover {
+    box-shadow: 0 0 15px 5px #f88e04;
+}

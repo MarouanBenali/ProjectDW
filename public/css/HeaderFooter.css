@@ -1,0 +1,78 @@
+/* HEADER STYLE */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 2%;
+    background: linear-gradient(to bottom, #0766AD, #8EA7E9);
+    border-radius: 0px 0px 80px 80px;
+    border-bottom: 2px solid #000101;
+    position: sticky;
+    z-index: 3;
+    top: 0;
+}
+
+header span {
+    color: #f88e04;
+    text-shadow: 7px 6px 1px rgba(0, 0, 0, 0.27);
+}
+
+header h1 {
+    font-size: 50px;
+    font-family: 'Dancing Script', sans-serif;
+    color: #000000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 7px;
+    padding: 7px;
+}
+
+nav a:hover {
+    color: #0766AD;
+    background-color: #FFF2F2;
+    border-radius: 30px;
+    box-shadow: -1px -1px 10px 2px #f88e04;
+}
+
+#notifications {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.909);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.userName{
+    color: #f88e04;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* FOOTER STYLE */
+footer {
+    color: #d51616;
+    text-align: center;          
+}
+
+footer img {
+    width: 30px;
+    margin: 0 15px;
+    border-radius: 10px;
+}
+
+footer img:hover {
+    background: white;
+}
