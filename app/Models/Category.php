@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,8 +13,7 @@ class Category extends Model
         'name',
         'description',
         'image',
-        'link',
-        'nbr_visitors',
+        'bgImg',
     ];
 
     public function articles()

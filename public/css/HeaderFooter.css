@@ -1,29 +1,33 @@
-/* HEADER STYLE */
+/*HEADER */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 60px;
     padding: 0 2%;
-    background: linear-gradient(to bottom, #0766AD, #8EA7E9);
-    border-radius: 0px 0px 80px 80px;
-    border-bottom: 2px solid #000101;
+    background: linear-gradient(to bottom, #065a9e, #7a9de7);
+    border-radius: 0px 0px 50px 50px;
+    font-family: Arial, sans-serif;
+    border-bottom: 2px solid #000;
     position: sticky;
-    z-index: 3;
     top: 0;
+    z-index: 100;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header span {
     color: #f88e04;
-    text-shadow: 7px 6px 1px rgba(0, 0, 0, 0.27);
+    font-size: 50px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-    font-size: 50px;
-    font-family: 'Dancing Script', sans-serif;
-    color: #000000;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
 }
 
+/*NAV */
 nav a {
     color: white;
     text-decoration: none;
@@ -31,48 +35,55 @@ nav a {
     font-size: 15px;
     font-weight: bold;
     margin: 7px;
-    padding: 7px;
+    padding: 8px 12px;
+    border-radius: 20px;
 }
 
 nav a:hover {
     color: #0766AD;
     background-color: #FFF2F2;
     border-radius: 30px;
-    box-shadow: -1px -1px 10px 2px #f88e04;
+    box-shadow: 0px 0px 12px 3px rgba(248, 142, 4, 0.7);
 }
 
+/*Notificatiopn*/
 #notifications {
     position: fixed;
-    top: 50px;
+    top: 60px;
     right: 10px;
-    width: 300px;
-    background-color: rgba(0, 0, 0, 0.909);
-    color: white;
+    width: 320px;
+    background-color: rgba(0, 0, 0, 0.988);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 1000;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    z-index: 200;
 }
 
-.userName{
+/* Username */
+.userName {
     color: #f88e04;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
 }
-/* FOOTER STYLE */
+
+/* FOOTER */
 footer {
     color: #d51616;
-    text-align: center;          
+    text-align: center;  
+    padding: 10px 0;        
+    font-size: 14px;
 }
 
 footer img {
-    width: 30px;
-    margin: 0 15px;
+    width: 32px;
+    margin: 0 12px;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 footer img:hover {
     background: white;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }

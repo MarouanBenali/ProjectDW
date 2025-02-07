@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/HeaderFooter.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
 <body>
-    <header>
-        <script src="{{ asset('js/header.js') }}"></script>
-    </header>
+    @include('layouts.header')
     <main class="wrapper">
         <span class="bg-animate"></span>
         <span class="bg-animate2"></span>
@@ -66,7 +62,7 @@
                 <!-- Confirmer le mot de passe -->
                 <div class="input-box animation" style="--i:21; --j:4;">
                     <input type="password" name="password_confirmation" minlength="6" maxlength="12" placeholder="Confirmer le mot de passe" required>
-                    <img src="/img/pwc.png" alt="user">
+                    <img src="/img/lock.png" alt="user">
                 </div>
 
                 <!-- Numéro de téléphone -->

@@ -30,14 +30,6 @@ class ResponsableThemeController extends Controller
         // Récupérer les conversations liées aux articles de cette catégorie
         $conversations = Conversation::whereIn('article_id', $articles->pluck('id'))->get();
 
-        // Calculer les statistiques des articles de cette catégorie
-        $statistics = [
-            'articles_count' => $articles->count(), // Nombre d'articles
-            'subscribers_count' => $subscriptions->count(), // Nombre d'abonnés
-            'views_count' => Statistic::whereIn('article_id', $articles->pluck('id'))->sum('views'), // Nombre total de vues
-            'likes_count' => Statistic::whereIn('article_id', $articles->pluck('id'))->sum('likes'), // Nombre total de likes
-        ];
-
         // Retourner la vue avec toutes les données récupérées
         return view('dashboard', compact('articles', 'subscriptions', 'conversations', 'statistics'));
     }

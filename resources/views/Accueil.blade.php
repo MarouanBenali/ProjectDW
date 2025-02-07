@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <title> Tech Horizons</title>
     <link rel="icon" href="{{ asset('img/icon.png') }}" type="image/png">
-    <link rel="stylesheet" href="{{ asset('css/HeaderFooter.css') }}">
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <header>
-        <script src="{{ asset('js/header.js') }}"></script>
-    </header>
+@include('layouts.header')
     <main class="description">
         <div class="left">
             <h1 class="fade-in"><span>PLONGEZ DANS LES INNOVATIONS DU FUTUR !</span></h1>
@@ -28,9 +25,7 @@
         <img src="{{ asset('img/imgrobot.png') }}" class="image_robot" id="robotImage">
         </div>
     </main>
-    <footer>
-        <script src="{{ asset('js/footer.js') }}"></script>
-    </footer>
+    @include('layouts.footer')
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {

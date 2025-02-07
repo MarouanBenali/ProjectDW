@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, rgba(10, 117, 218, 0.67), rgba(113, 201, 248, 0.75));
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex;
+}
+
+.title {
+    background-color: #f88e04;
+    border-radius: 30px;
+    color: white;
+    box-shadow: 5px 5px 14px 3px red;
+    width: 40%;
+    padding: 6px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 15px;
+    background-color: #f88e04;
+    border: 1px solid black;
+    border-radius: 0 60px 60px 0;
+    padding: 0 20px 0 5px;
+    margin: 0;
+    height: calc(100vh - 65px);
+    transition: width 0.3s ease;
+}
+
+.sidebar h2,
+.sidebar ul {
+    opacity: 0;
+    font-weight: bold;
+}
+
+.sidebar:hover {
+    width: fit-content;
+}
+
+.sidebar:hover h2,
+.sidebar:hover ul {
+    opacity: 1;
+}
+
+.sidebar:hover span {
+    opacity: 0;
+}
+
+.sidebar span {
+    font-size: 40px;
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar h2 {
+    padding: 0 10px;
+}
+
+.sidebar ul {
+    padding: 0 15px;
+}
+
+.sidebar ul li a,
+strong {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.sidebar ul li a:hover,
+strong:hover {
+    color: #007bff;
+}
+
+strong b {
+    color: red;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu li a {
+    font-weight: 100;
+}
+
+.submenu.active {
+    display: block;
+}
+
+.content {
+    width: 100%;
+    margin-left: 45px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e0f7fa;
+    /* light cyan background */
+    margin-bottom: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+    border: 1.5px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+table thead {
+    background-color: rgb(27, 86, 204);
+    /* Deep blue header */
+    color: white;
+    font-weight: bold;
+}
+
+table th {
+    border-bottom: 2px solid #fff;
+}
+
+ul li {
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-reject {
+    background-color: #e53935;
+}
+
+.btn-propose {
+    background-color: #007bff;
+}
+
+h3 {
+    color: gold;
+    margin: 0;
+    padding: 0;
+}

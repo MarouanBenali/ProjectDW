@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr"> 
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <title>Tech Horizons</title>
     <link rel="icon" href="{{ asset('img/icon.png') }}" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/Categorie.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/HeaderFooter.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/Categorie.css') }}">
 </head>
 
 <body>
-    <header>
-        <script src="{{ asset('js/header.js') }}"></script> 
-    </header>
-
+    @include('layouts.header')
     <div class="intro">
         <p>
             <b>ⓉⒽ</b> n'est pas qu'un simple magazine,
@@ -27,17 +22,18 @@
             ✨ Découvrez, apprenez et devenez acteurs de ce monde en pleine évolution.
         </p>
     </div>
-
+    
     <div class="search-container">
         <input type="search" placeholder="Rechercher une catégorie...">
     </div>
-
+    
     <div class="categories">
-        <script src="{{ asset('js/Categorie.js') }}"></script> 
+        <script src="{{ asset('js/Categorie.js') }}"></script>
     </div>
-
-    <footer>
-        <script src="{{ asset('js/footer.js') }}"></script>
-    </footer>
+    
+    @include('layouts.footer')
 </body>
+
 </html>
+
+

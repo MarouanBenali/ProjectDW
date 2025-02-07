@@ -12,6 +12,7 @@ class Conversation extends Model
     protected $fillable = [
         'article_id',
         'user_id',
+        'content',
     ];
 
     public function article()
@@ -22,10 +23,5 @@ class Conversation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
     }
 }

@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ArticleRating extends Model
 {
     use HasFactory;
-
     protected $table = 'articles_ratings';
-
     protected $fillable = [
         'user_id',
         'article_id',

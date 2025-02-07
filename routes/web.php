@@ -1,149 +1,72 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EditorController;
-use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\AuthController;;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\{DashboardController, ConversationController,EditorController, ArticleController, CategoryController, SubscriptionController, UserController, NotificationController, ArticleRatingController, NumeroController, CategoryRatingController};
+//============================================ Routes publiques =====================================================
+Route::get('/', fn() => view('Accueil'))->name('accueil.page');
+Route::get('/presentation', fn() => view('Presentation'))->name('presentation');
+Route::get('/categories', fn() => view('Categorie'))->name('categories');
+Route::get('/login',fn()=>view('auth.login'))->name('login');
 
-// الصفحة الرئيسية (Accueil)
-Route::get('/', function () {
-    return view('Accueil');
-})->name('accueil.page');
-
-// صفحة العرض التقديمي
-Route::get('/presentation', function () {
-    return view('Presentation');
-})->name('presentation');
-
-// صفحة الفئات
-Route::get('/categories', function () {
-    return view('Categorie');
-})->name('categories');
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//------------------les categories ------------------------------
-Route::get('/categories/ia', function () {
-    return view('Category.IA');
-})->name('categories.ia');
-
-Route::get('/categories/iot', function () {
-    return view('Category.IoT');
-})->name('categories.iot');
-
-Route::get('/categories/cyber', function () {
-    return view('Category.Cyber');
-})->name('categories.cyber');
-
-Route::get('/categories/vr', function () {
-    return view('Category.VR');
-})->name('categories.vr');
-
-Route::get('/categories/ar', function () {
-    return view('Category.AR');
-})->name('categories.ar');
-
-Route::get('/categories/blockchain', function () {
-    return view('Category.Blockchain');
-})->name('categories.blockchain');
-
-Route::get('/categories/5g', function () {
-    return view('Category.R5G');
-})->name('categories.5g');
-
-Route::get('/categories/robot', function () {
-    return view('Category.robot');
-})->name('categories.robot');
-
-//////////////////////////////////////////**CategoryController////////////////////////////////////////////
-
-use App\Http\Controllers\CategoryController;
-
-Route::get('/categorie-data', [CategoryController::class, 'getCategoriesData']);
-
-//تقييم فئة 
-Route::post('/categories/{categoryId}/rate', [CategoryController::class, 'store'])->name('categories.rate');
-/*<form method="POST" action="{{ route('categories.rate', $categoryId) }}">
-    @csrf
-    <label for="rating">تقييم:</label>
-    <input type="number" name="rating" min="1" max="5" required>
-    <button type="submit">إضافة التقييم</button>
-</form>
- */
-
-// Routes للمقالات
-Route::prefix('articles')->group(function () {
-    Route::post('/{id}/reject', [ArticleController::class, 'reject'])->name('articles.reject');
-    Route::post('/{id}/propose', [ArticleController::class, 'propose'])->name('articles.propose');
-});
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-// Route لتسجيل الدخول (GET)
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-// Routes للمصادقة (Authentication)
+//============================================== Routes Auth ========================================================
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-use Illuminate\Support\Facades\Auth;
-
 Route::get('/logout', function () {
     Auth::logout();
-    return redirect('/login')->with('success', 'Vous êtes déconnecté.');
+    return redirect('/login');
 })->name('logout');
-
-
-// Routes محمية بالـ middleware 'auth'
 Route::middleware(['auth'])->group(function () {
-    // Route للمشرفين (Managers)
+    //--------Manager-----------
     Route::middleware(['manager'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/articles/{id}/reject', [ArticleController::class, 'rejectArticle'])->name('articles.reject');
+        Route::post('/articles/{id}/propose', [ArticleController::class, 'proposeArticle'])->name('articles.propose');
+        Route::post('/conversations/{conversationId}', [ConversationController::class, 'destroy'])->name('deleteConversation');
     });
-
-    // Route للمحررين (Editors)
+    //----------Editor----------
     Route::middleware(['editor'])->group(function () {
         Route::get('/editor', [EditorController::class, 'index'])->name('editor.page');
+        Route::post('/AddCategorie', [CategoryController::class, 'AddCat'])->name('categories.AddCat');
+        Route::get('/DelCategorie/{id}', [CategoryController::class, 'destroy']);
+        Route::post('/editor/articles/accept/{id}', [ArticleController::class, 'acceptArticle'])->name('acceptArticle');
+        Route::post('/editor/articles/reject/{id}', [ArticleController::class, 'rejectArticle'])->name('rejectArticle');
+        Route::post('/editor/numero/publish/{num}/{category_id}', [NumeroController::class, 'publishNumero'])->name('publishNumero');
+        Route::post('/editor/users/ban/{id}', [UserController::class, 'DeBanUser'])->name('DeBanUser');
+        Route::post('/user/{id}/assign-role', [UserController::class, 'assignRole'])->name('assignRole');
+        Route::get('/AddCategorie', fn() => view('addCategory'))->name('AddCategorie');
     });
+    //--------Subscriber---------
+    Route::get('/subscriber', fn() => view('subscriber'))->name('subscriber');
+    Route::get('/subscriber', [SubscriptionController::class, 'index'])->name('subscriber');
+    //---------Add Article--------
+    Route::get('/AddArticle/{categoryId}', fn($categoryId) => view('addArticle', ['categoryId' => $categoryId]))->name('AddArticle');
+    
 });
 
-use App\Http\Controllers\SubscriptionController;
-// Routes pour les abonnements
-Route::prefix('subscriptions')->group(function () {
-    Route::delete('/{id}', [SubscriptionController::class, 'delete'])->name('subscriptions.delete');
-});
+//============================================ Routes Category ======================================================
+Route::get('/categorie-data', [CategoryController::class, 'getCategoriesData']);
+Route::post('/subscribe/{categoryId}', [CategoryController::class, 'subscribe'])->name('categories.subscribe');
+Route::get('/Explorer/{categoryId}', [CategoryController::class, 'showCategory'])->name('category.show');
+Route::post('/CategoryRate/{id}', [CategoryRatingController::class, 'CategoryRate'])->name('CategoryRate');
 
+//============================================ Routes Article ======================================================
+Route::post('/assign-number/{article}', [NumeroController::class, 'assignNumber'])->name('assignNumber');
+Route::post('/articlesRate/{articleId}', [ArticleRatingController::class, 'articlesRate'])->name('articlesRate');
+Route::get('/articles/show/{id}', [ArticleController::class, 'viewArticle'])->name('viewArticle');
+Route::post('/article/{id}/comment', [ArticleController::class, 'addConversation'])->name('addConversation');
+Route::get('/article/{categoryId}',[ArticleController::class,'AjouterArticle'])->name('AjouterArticle');
+Route::post('/storeArticle', [ArticleController::class, 'store'])->name('storeArticle');
 
-use App\Http\Controllers\MessageController;
+//============================================== Routes User =============================================================
+Route::get('/getInfoUser', [UserController::class, 'getInfoUser']);
+Route::post('/updatePicture', [UserController::class, 'updatePicture'])->name('updatePicture');
 
-Route::prefix('messages')->group(function () {
-    Route::delete('/{id}', [MessageController::class, 'delete'])->name('messages.delete');
-});
-
-/////////////////////////////////     editeur     ///////////////////////////////////////////
-// Routes للمحررين (Editors)
-Route::middleware(['auth', 'editor'])->group(function () {
-    Route::get('/editor', [EditorController::class, 'index'])->name('editor.page');
-    Route::post('/editor/articles/accept/{id}', [EditorController::class, 'acceptArticle'])->name('editor.articles.accept');
-    Route::post('/editor/articles/reject/{id}', [EditorController::class, 'rejectArticle'])->name('editor.articles.reject');
-    Route::post('/editor/issues/publish/{id}', [EditorController::class, 'publishIssue'])->name('editor.issues.publish');
-    Route::post('/editor/issues/unpublish/{id}', [EditorController::class, 'unpublishIssue'])->name('editor.issues.unpublish');
-    Route::post('/editor/users/ban/{id}', [EditorController::class, 'banUser'])->name('editor.users.ban');
-    Route::post('/editor/users/unban/{id}', [EditorController::class, 'unbanUser'])->name('editor.users.unban');
-    Route::post('/editor/users/assign-editor/{id}', [EditorController::class, 'assignEditorRole'])->name('editor.users.assign-editor');
-    Route::post('/editor/users/remove-editor/{id}', [EditorController::class, 'removeEditorRole'])->name('editor.users.remove-editor');
-});
-//////////////////////////////////////////////
-Route::get('/article/{id}', [ArticleController::class, 'viewArticle'])->name('article.view');
-
-
-////////////////*img profile :
-use App\Http\Controllers\UserController;
-Route::get('/photoProfil', [UserController::class, 'getProfilePicture']);
-
-/////////////////////////////////////////////////////////////////////////////////
-use App\Http\Controllers\NotificationController;
+//============================================ Routes Notification ======================================================
 Route::get('/get-notifications', [NotificationController::class, 'getNotifications']);
+
+//============================================ Routes Subscription ======================================================
+Route::delete('/subscriptions/{id}', [SubscriptionController::class, 'delete'])->name('subscriptions.delete');
+Route::get('/getSubscriptions', [SubscriptionController::class, 'getSubscriptions'])->name('getSubscriptions');
+Route::get('/DeSabonner/{categoryId}', [SubscriptionController::class, 'DeSabonner'])->name('DeSabonner');
+

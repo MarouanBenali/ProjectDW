@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Subscription;
+
 
 class User extends Authenticatable
 {
@@ -28,6 +30,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     public function articles()
     {
         return $this->hasMany(Article::class);
@@ -36,6 +42,11 @@ class User extends Authenticatable
     public function ratings()
     {
         return $this->hasMany(ArticleRating::class);
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class);
     }
 
     public function categoryRatings()
@@ -53,19 +64,9 @@ class User extends Authenticatable
         return $this->hasMany(Conversation::class);
     }
 
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
     public function notifications()
     {
         return $this->hasMany(Notification::class);
-    }
-
-    public function statistics()
-    {
-        return $this->hasMany(Statistic::class);
     }
 
     public function managedCategories()
@@ -73,3 +74,4 @@ class User extends Authenticatable
         return $this->hasMany(CategoryManager::class);
     }
 }
+

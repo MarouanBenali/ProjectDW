@@ -2,35 +2,65 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\CategoryRating;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CategoryRatingSeeder extends Seeder
 {
-    // La méthode run est utilisée pour insérer des évaluations de catégories par les utilisateurs
     public function run()
     {
-        // Récupération des utilisateurs ayant le rôle "subscriber"
-        $users = User::where('role', 'subscriber')->get();
-        
-        // Récupération de toutes les catégories
-        $categories = Category::all();
+        $ratings = [
+            ['user_id' => 1, 'category_id' => 1, 'rating' => 5],
+            ['user_id' => 2, 'category_id' => 1, 'rating' => 4],
+            ['user_id' => 3, 'category_id' => 1, 'rating' => 3],
+            ['user_id' => 4, 'category_id' => 1, 'rating' => 5],
+            ['user_id' => 5, 'category_id' => 1, 'rating' => 2],
 
-        // Boucle à travers toutes les catégories
-        foreach ($categories as $category) {
-            // Pour chaque catégorie, créer 30 évaluations
-            for ($i = 1; $i <= 30; $i++) {
-                // Sélection aléatoire d'un utilisateur
-                $user = $users->random();
+            ['user_id' => 1, 'category_id' => 2, 'rating' => 3],
+            ['user_id' => 2, 'category_id' => 2, 'rating' => 5],
+            ['user_id' => 3, 'category_id' => 2, 'rating' => 4],
+            ['user_id' => 4, 'category_id' => 2, 'rating' => 3],
+            ['user_id' => 5, 'category_id' => 2, 'rating' => 5],
 
-                // Vérification si l'évaluation existe déjà, sinon création avec une note aléatoire entre 3 et 5
-                CategoryRating::firstOrCreate(
-                    ['user_id' => $user->id, 'category_id' => $category->id], // Condition d'unicité (utilisateur et catégorie)
-                    ['rating' => rand(3, 5)] // Valeur aléatoire de la note (entre 3 et 5)
-                );
-            }
+            ['user_id' => 1, 'category_id' => 3, 'rating' => 4],
+            ['user_id' => 2, 'category_id' => 3, 'rating' => 2],
+            ['user_id' => 3, 'category_id' => 3, 'rating' => 5],
+            ['user_id' => 4, 'category_id' => 3, 'rating' => 3],
+            ['user_id' => 5, 'category_id' => 3, 'rating' => 4],
+
+            ['user_id' => 1, 'category_id' => 4, 'rating' => 5],
+            ['user_id' => 2, 'category_id' => 4, 'rating' => 3],
+            ['user_id' => 3, 'category_id' => 4, 'rating' => 4],
+            ['user_id' => 4, 'category_id' => 4, 'rating' => 2],
+            ['user_id' => 5, 'category_id' => 4, 'rating' => 5],
+
+            ['user_id' => 1, 'category_id' => 5, 'rating' => 2],
+            ['user_id' => 2, 'category_id' => 5, 'rating' => 4],
+            ['user_id' => 3, 'category_id' => 5, 'rating' => 3],
+            ['user_id' => 4, 'category_id' => 5, 'rating' => 5],
+            ['user_id' => 5, 'category_id' => 5, 'rating' => 3],
+
+            ['user_id' => 1, 'category_id' => 6, 'rating' => 3],
+            ['user_id' => 2, 'category_id' => 6, 'rating' => 5],
+            ['user_id' => 3, 'category_id' => 6, 'rating' => 4],
+            ['user_id' => 4, 'category_id' => 6, 'rating' => 3],
+            ['user_id' => 5, 'category_id' => 6, 'rating' => 2],
+
+            ['user_id' => 1, 'category_id' => 7, 'rating' => 4],
+            ['user_id' => 2, 'category_id' => 7, 'rating' => 3],
+            ['user_id' => 3, 'category_id' => 7, 'rating' => 5],
+            ['user_id' => 4, 'category_id' => 7, 'rating' => 4],
+            ['user_id' => 5, 'category_id' => 7, 'rating' => 5],
+
+            ['user_id' => 1, 'category_id' => 8, 'rating' => 5],
+            ['user_id' => 2, 'category_id' => 8, 'rating' => 4],
+            ['user_id' => 3, 'category_id' => 8, 'rating' => 3],
+            ['user_id' => 4, 'category_id' => 8, 'rating' => 5],
+            ['user_id' => 5, 'category_id' => 8, 'rating' => 4],
+        ];
+
+        foreach ($ratings as $rating) {
+            CategoryRating::create($rating);
         }
     }
 }

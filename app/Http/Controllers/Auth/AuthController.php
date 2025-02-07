@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function showLoginForm($id){
+       return redirect()->route('/login'); 
+    }
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -17,17 +20,16 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // التحقق من دور المستخدم وتوجيهه إلى الصفحة المناسبة
             $user = Auth::user();
             switch ($user->role) {
                 case 'subscriber':
-                    return redirect()->route('categories')->with('success', 'Bienvenue, abonné!');
+                    return redirect()->route('subscriber');
                 case 'manager':
-                    return redirect()->route('dashboard')->with('success', 'Bienvenue, gestionnaire!');
+                    return redirect()->route('dashboard');
                 case 'editor':
-                    return redirect()->route('editor.page')->with('success', 'Bienvenue, éditeur!');
+                    return redirect()->route('editor.page');
                 default:
-                    return redirect()->route('accueil.page')->with('error', 'Rôle non reconnu.');
+                    return redirect()->route('accueil.page');
             }
         }
 
@@ -50,10 +52,8 @@ class AuthController extends Controller
             'terms' => 'accepted',
         ]);
 
-        // حفظ الصورة
         $profilePicturePath = $request->file('profile_picture')->store('profile_pictures', 'public');
 
-        // إنشاء المستخدم
         User::create([
             'name' => $validated['full_name'],
             'email' => $validated['email'],
@@ -63,7 +63,7 @@ class AuthController extends Controller
             'date_of_birth' => $validated['date_of_birth'],
             'gender' => $validated['gender'],
             'preferred_language' => $validated['preferred_language'],
-            'role' => 'subscriber', // يتم تعيين الدور كـ "subscriber" بشكل افتراضي
+            'role' => 'subscriber', 
         ]);
 
         return redirect()->route('login')->with('success', 'Votre compte a été créé avec succès.');

@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #0766AD, #8EA7E9, #E5E0FF);
+    margin: 0;
+    padding: 0;
+}
+
+.AddContainer {
+    width: 70%;
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.AddContainer h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #f88e04;
+}
+
+.AddContainer label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #0a5fa4;
+}
+
+.AddContainer input,
+.AddContainer textarea {
+    width: 95%;
+    padding: 10px;
+    margin: 2px auto;
+    border-radius: 10px;
+    border: 1px solidrgb(3, 61, 221);
+    font-size: 1rem;
+    color: #0a5fa4;
+}
+
+.AddContainer button {
+    width: 98%;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: rgba(248, 142, 4, 0.85);
+    color: white;
+    border: none;
+    margin: 7px auto;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.AddContainer button:hover {
+    background-color: #f88e04;
+}

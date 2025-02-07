@@ -1,0 +1,187 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, rgba(10, 117, 218, 0.67), rgba(113, 201, 248, 0.75));
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.Cntainer {
+    width: 92%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.Cntainer h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px rgba(148, 16, 16, 0.65);
+    margin: 0;
+    padding: 20px 0;
+}
+
+.Cntainer h2 {
+    background-color: #f88e04;
+    border-radius: 30px;
+    font-size: 20px;
+    color: white;
+    box-shadow: 5px 5px 14px 3px rgba(255, 0, 0, 0.5);
+    width: 25%;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ArticleList {
+    position: relative;
+    margin: 20px 0;
+}
+
+.scroll {
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.CadreArticle {
+    flex: 0 0 auto;
+    width: 31%;
+    margin: 0 13px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.CadreArticle:hover {
+    transform: scale(1.05);
+}
+
+.CadreArticle img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.CadreArticle .content {
+    padding: 15px;
+    position: relative;
+    height: 150px;
+
+}
+
+.CadreArticle h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #4CAF50;
+}
+
+.CadreArticle p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.CadreArticle a {
+    background-color: rgba(76, 175, 79, 0.85);
+    font-weight: bold;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 15px;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.CadreArticle a:hover {
+    background-color: #f8b400;
+}
+
+.scrollBtn {
+    position: absolute;
+    top: 40%;
+    background-color: rgba(248, 142, 4, 0.76);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+.scrollBtn:hover {
+    background-color: rgb(248, 142, 4);
+}
+
+.scrollBtn.left {
+    left: 0px;
+}
+
+.scrollBtn.right {
+    right: 0px;
+}
+
+.locked-article {
+    position: relative;
+    filter: grayscale(100%);
+    /*Noir & bla..*/
+}
+
+.locked-article img {
+    opacity: 0.7;
+}
+
+.lock-icon {
+    position: absolute;
+    top: 33%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    background: url('https://cdn-icons-png.flaticon.com/512/61/61457.png') no-repeat center center;
+    background-size: cover;
+}
+
+
+.star-rating {
+    font-size: 3em;
+    direction: rtl;
+    text-align: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label,
+.star-rating input:checked~label {
+    color: #f5b301;
+}
+
+.rating-text {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}

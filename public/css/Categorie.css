@@ -1,6 +1,7 @@
+/*categorie.css*/
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0766AD, #8EA7E9, #E5E0FF);
+    background: linear-gradient(to bottom,rgba(10, 117, 218, 0.67),rgba(113, 201, 248, 0.75));
     margin: 0;
     padding: 0;
 }
@@ -59,12 +60,14 @@ input:hover {
     justify-content: center;
 }
 
-.category {
+.category , .categoryAdd {
+    position: relative;
     background: linear-gradient(to top, rgba(52, 83, 137, 0.366), rgba(246, 184, 59, 0.914));
     border: 2px solid #8EA7E9;
     border-radius: 30px;
     box-shadow: 10px 5px 1px rgba(0, 0, 0, 0.415);
     width: 30%;
+    height: 460px;
     padding: 10px;
     text-align: center;
     text-decoration: none;
@@ -74,12 +77,12 @@ input:hover {
     cursor: pointer;
 }
 
-.category:hover {
+.category:hover , .categoryAdd:hover {
     box-shadow: 0 0 30px 10px rgba(255, 4, 4, 0.8);
     transform: scale(0.8);
 }
 
-.category img {
+.category img , .categoryAdd img {
     width: 60%;
     opacity: 1;
     transition: opacity 1.5s ease-out;
@@ -89,7 +92,7 @@ input:hover {
     opacity: 0;
 }
 
-.category h2 {
+.category h2 , .categoryAdd h2 {
     margin: 10px 0;
     color: #1f09e4;
     font-size: 1.8rem;
@@ -104,36 +107,48 @@ input:hover {
     opacity: 0;
 }
 
-.cat1:hover {
-    background: url(/img/ia2.png) center / cover;
+.category .buttons {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cat2:hover {
-    background: url(/img/ob2.png) center / cover;
+.category:hover .buttons {
+    display: flex;
 }
 
-.cat3:hover {
-    background: url(/img/cs2.png) center / cover;
+.category .buttons a {
+    padding: 10px 20px;
+    background-color: #0766AD;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    text-align: center;
 }
 
-.cat4:hover {
-    background: url(/img/vr2.png) center / cover;
+.category .buttons a:hover {
+    background-color: #f88e04;
 }
 
-.cat5:hover {
-    background: url(/img/ar2.png) center / cover;
+.category .rating {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: gold;
 }
 
-.cat6:hover {
-    background: url(/img/bc2.png) center / cover;
-}
-
-.cat7:hover {
-    background: url(/img/g2.png) center / cover;
-}
-
-.cat8:hover {
-    background: url(/img/rob2.png) center / cover;
+.DelCat{
+    background-color: #ff0000;
 }
 
 .rating {

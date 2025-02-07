@@ -1,7 +1,11 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0766AD, #8EA7E9, #E5E0FF);
+    background: linear-gradient(to bottom,rgba(10, 117, 218, 0.67),rgba(113, 201, 248, 0.75));
     color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    line-height: 1.8;
+    word-spacing: 8px;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -40,4 +44,9 @@ section p {
     margin-bottom: 1rem;
     text-align: justify;
     color: #444;
+}
+
+li {
+    text-indent: 40px;
+    list-style: none;
 }

@@ -1,0 +1,162 @@
+body {
+    background: linear-gradient(to bottom,rgba(10, 117, 218, 0.67),rgba(113, 201, 248, 0.75));
+    margin: 0;
+    padding: 0;
+}
+
+.article-container {
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    font-family: 'Georgia', serif;
+    border-left: 10px solid #4CAF50;
+}
+
+.article-title {
+    color: #4CAF50;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.article-author {
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.article-subtitle {
+    color: #2C3E50;
+    text-transform: uppercase;
+
+}
+
+.article-content {
+    font-size: 18px;
+    line-height: 1.8;
+    word-spacing: 6px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.star-rating {
+    font-size: 4em;
+    direction: rtl;
+    text-align: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label,
+.star-rating input:checked~label {
+    color: #f5b301;
+}
+
+.rating-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.evaluation {
+    width: 100%;
+    margin: 30px;
+}
+
+.evaluation p {
+    width: fit-content;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.evaluation strong {
+    font-size: 20px;
+    color: red;
+}
+
+.conversations {
+    background-color:rgb(231, 231, 250);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+}
+
+.conversations img {
+    width: 55px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+}
+
+.conversation-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.conversation-item strong {
+    font-size: 18px;
+    color: #333;
+    margin: 0 15px;
+}
+
+.conversation-item p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 18px;
+}
+
+
+.conversations h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.conversations textarea {
+    width: 96.5%;
+    height: 100px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+}
+
+.conversations button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.conversations button:hover {
+    background-color:rgb(14, 167, 22);
+}
+
+.delete-container {
+    margin-left: auto; 
+}
+
